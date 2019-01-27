@@ -6,7 +6,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.DAL
 {
-    public class Users
+    public class Users  
     {
         public List<Registration> Registrations { get; set; }
         public Registration AddItem { get; set; }
