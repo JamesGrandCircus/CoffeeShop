@@ -12,12 +12,8 @@ namespace WebApplication1.Controllers
     {
 
 
-        Users users = new Users();
+        private readonly Users _context = new Users();
 
-        //public Registration newUser = new Registration();
-        //public List<Registration> Test { get; set; }
-
-        // GET: Registration
         public ActionResult Index()
         {
             return View();
@@ -29,8 +25,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                users.AddItem = newUser;
-                users.UsersAdd();
+                _context.Registrations.Add(newUser);
                 return View("Summary");
             }
             else
@@ -41,7 +36,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult Summary()
         {
-            ViewBag.NewUserFirstName = users.CurrentFirstName;
+            ViewBag.FirstName = _context.Registrations.Last(n => n.FirstName);
             return View();
         }
     }
