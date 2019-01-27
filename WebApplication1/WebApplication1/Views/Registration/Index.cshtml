@@ -1,7 +1,44 @@
-﻿
+﻿@model WebApplication1.Models.Registration
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Register</h2>
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm("Create", "Registration", FormMethod.Post))
+        {
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, "First Name: ")
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter Name" })
+            @Html.ValidationMessageFor(m => m.FirstName, " Please enter valid name", new { @class = "text-danger" })
+        </div>
+                @Html.LabelFor(m => m.LastName, "Last Name: ")
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName, " Please enter valid name", new { @class = "text-danger" })
+                <br /><br />
+                @Html.LabelFor(m => m.EmailAddress, "Email:  ")
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailAddress, " Please enter valid email", new { @class = "text-danger" })
+                <br /><br />
+                @Html.LabelFor(m => m.PhoneNumber, "Phone Number:  ")
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, " Please enter valid Phone Number", new { @class = "text-danger" })
+                <br /><br />
+                @Html.LabelFor(m => m.Password, "Password:  ")
+                @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, " Please enter valid Password", new { @class = "text-danger" })
+                <br /><br />
+                <input type="submit" class="btn-group" value="Submit" />
+
+                }
+            </div>
+        </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
