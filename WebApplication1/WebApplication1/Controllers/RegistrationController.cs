@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebApplication1.Models;
 using WebApplication1.DAL;
 
+
 namespace WebApplication1.Controllers
 {
     public class RegistrationController : Controller
@@ -26,18 +27,23 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 _context.Registrations.Add(newUser);
-                return View("Summary");
+                return RedirectToAction("Summary");
             }
             else
             {
-                return View();
+                return View("Index");
             }
         }
 
         public ActionResult Summary()
         {
-            ViewBag.FirstName = _context.Registrations.Last(n => n.FirstName);
-            return View();
+            int lastID = _context.Registrations.Count();
+            var userFirstName = _context.Registrations
+                .Where(n => n.ID == lastID).First<Registration>().FirstName.ToString();
+            var model = new Registration();
+            model.FirstName = userFirstName;
+
+            return View(model);
         }
     }
 }
