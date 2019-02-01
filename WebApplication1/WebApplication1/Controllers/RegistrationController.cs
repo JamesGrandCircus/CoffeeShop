@@ -39,9 +39,11 @@ namespace WebApplication1.Controllers
         {
             int lastID = _context.Registrations.Count();
             var userFirstName = _context.Registrations
-                .Where(n => n.ID == lastID).First<Registration>().FirstName.ToString();
-            var model = new Registration();
-            model.FirstName = userFirstName;
+                .Where(n => n.ID == lastID).First().FirstName.ToString();
+            var model = new Registration
+            {
+                FirstName = userFirstName
+            };
 
             return View(model);
         }
