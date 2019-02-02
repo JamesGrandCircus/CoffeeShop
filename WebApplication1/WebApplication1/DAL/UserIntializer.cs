@@ -7,7 +7,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.DAL
 {
-    public class UserIntializer : System.Data.Entity.DropCreateDatabaseAlways<Users>
+    public class UserIntializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<Users>
     {
         protected override void Seed(Users context)
         {

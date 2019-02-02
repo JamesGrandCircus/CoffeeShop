@@ -11,8 +11,6 @@ namespace WebApplication1.Controllers
 {
     public class RegistrationController : Controller
     {
-
-
         private readonly Users _context = new Users();
 
         public ActionResult Index()
