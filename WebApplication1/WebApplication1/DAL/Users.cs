@@ -17,7 +17,7 @@ namespace WebApplication1.DAL
         }
 
         public DbSet<Registration> Registrations { get; set; }
-
+        public DbSet<Items> Items { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

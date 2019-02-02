@@ -20,6 +20,12 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult UsersList()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Create(Registration newUser)
         {
@@ -27,6 +33,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 _context.Registrations.Add(newUser);
+                _context.SaveChanges();
                 return RedirectToAction("Summary");
             }
             else
