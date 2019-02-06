@@ -33,6 +33,8 @@ namespace WebApplication1.Controllers
                 item = item.Where(s => s.Name.Contains(searchString));
             }
 
+			// James - Although this is just a stylistic choice, took me a moment to realize what you are doing here, I would
+			// put this in a seperate variable then pass the veiw.
             return View(await item.ToListAsync());
         }
 
